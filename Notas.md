@@ -292,7 +292,7 @@ Antes de la declaración del return se agrega el siguiente codigo:
 
 
     - Actualizar y almacenar los datos en el almacenamiento local siempre que haya un cambio en el estado de la placa 
-    
+
     useEffect(()=>{
 
     if (board.length > 0) window.localStorage.setItem("data",JSON.stringify(board))
@@ -301,3 +301,21 @@ Antes de la declaración del return se agrega el siguiente codigo:
 
      El valor del tablero cambiará cuando el usuario cree una nueva tarea, mueva la tarea o cambie el contenido de la tarea. Estos cambios activarán el código del segundo enlace useEffect y actualizarán automáticamente el almacenamiento local del 
         navegador con los datos más recientes.
+
+## Paso 8: Construyendo nuestra aplicación
+
+Una vez que esté satisfecho con su aplicación Kanban, es hora de crearla para la web. Lo que hará React es compilar la base del código a través de múltiples archivos JavaScript en un archivo HTML.
+ 
+Para compilar la aplicación, ejecute el siguiente comando en su directorio kanban-app . Este código simplemente creará una compilación de la aplicación y colocará la compilación en una nueva carpeta llamada compilación . Todos los archivos dentro de esta carpeta son el producto final que ahora se puede usar en producción.
+
+    npm run build
+
+## Paso 9: Implementación del proyecto en Google Firebase
+
+Paso 9: Implementación del proyecto en Google Firebase
+
+Antes de que podamos cargar nuestra aplicación web en Firebase, debemos decirle a Firebase que este proyecto es un proyecto de Firebase. Si aún tiene que instalar las herramientas de Firebase CLI, se recomienda encarecidamente que realice la búsqueda de Instalación en Firebase .
+
+<a href= "https://app.stackup.dev/quest_page/installation-of-firebase"  >Aquí </a
+
+https://app.stackup.dev/quest_page/kanban-app
