@@ -9,3 +9,5 @@ Primero, crea un nuevo directorio para nuestro proyecto React, Abra su terminal 
 - npm install react-draggable - instala el paquete react-draggable, Este paquete nos permite hacer que cualquier   elemento se pueda arrastrar. Los usuarios podrán arrastrar los componentes a través del navegador web    
 
 - npm run start - inicia el servidor de desarrollo local, Este comando abre una nueva pestaña en su navegador web predeterminado. En esta pestaña, podrá ver los cambios que ha realizado en su aplicación React en vivo.
+
+Ahora, creemos algunas carpetas nuevas para organizar los archivos con los que trabajaremos. En primer lugar, en la carpeta src , cree una carpeta llamada components .
