@@ -32,10 +32,14 @@ export function Header () {
 
 
 ## Paso 3: Importar estados de cuenta
-Abramos el archivo App.js ya que escribiremos la mayor parte de la lógica de la aplicación web Kanban en este archivo. En primer lugar, reemplace el código existente en App.js con el siguiente código. Tendremos que importar varios paquetes y las dependencias arrastrables que descargamos anteriormente en el paso 1.
- En la línea 1 del archivo actual, necesitaremos usar dos ganchos integrados en ReactJS. Estos dos ganchos son useState y useEffect . El estado de uso
-import React, { useState, useEffect } from "react";
-import { Header } from "./components/Header";
-import Draggable from 'react-draggable';
+En el archivo App.js escribiremos la mayor parte de la lógica de la aplicación web Kanban en este archivo.
+
+En primer lugar, reemplace el código existente en App.js con el siguiente código. Tendremos que importar varios paquetes y las dependencias arrastrables que descargamos anteriormente en el paso 1.
+
+- import React, { useState, useEffect } from "react"; - importa el paquete React y los hooks useState y useEffect que sirve para crear estados y efectos
 
 hook nos permite crear un estado que se puede cambiar. Un Estado es simplemente una variable que React monitoreará internamente en segundo plano. Cuando cambia el estado, cambiará el contenido que se muestra en la pantalla en lugar de volver a mostrar toda la página web. Este comportamiento hará que una aplicación React sea eficiente.
+
+- import { Header } from "./components/Header"; - importa el componente Header que creamos en el paso 2
+- import Draggable from 'react-draggable'; - importa el paquete react-draggable que descargamos en el paso 1
+
