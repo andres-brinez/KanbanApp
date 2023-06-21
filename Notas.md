@@ -218,3 +218,85 @@ El codigo va dentro de la función onStop del componente Draggable que se encuen
 Ahora agregaremos el estilo al final del archivo App.js con una const styles={ estilos}
 
 ## Paso 7: use Effect
+
+Antes de la declaración del return se agrega el siguiente codigo:
+
+    - Este  hook ejecutará el código cuando la aplicación se cargue por primera vez. Es extremadamente útil para cargar o recuperar datos cuando un usuario ingresa a una página. 
+
+    useEffect(()=>{
+
+
+        let data = window.localStorage.getItem("data") - obtendrá datos del almacenamiento local del navegador especificando una clave. 
+
+        - Si no hay datos significa que es la  primera vex que el usuaro usa esta aplicacion 
+        
+        if(data){ - si hay datos en el almacenamiento local se ejecuta el siguiente codigo,que actualiza el estado board con los datos del almacenamiento local
+            setBoard(JSON.parse(data))
+        }
+        else{ - si no hay datos en el almacenamiento local se ejecuta el siguiente codigo,que  guarda unos datos para generar  un tablero de ejemplo.
+
+        setBoard([ - se actualiza el estado board con los datos de ejemplo
+            
+            {
+            id: 1,
+            title: 'To Do',
+            cards: [
+            {
+            id: 1,
+            title: 'Learn React',
+            description: 'Learn the fundamentals of React'
+            },
+            {
+            id: 2,
+            title: 'Learn Firebase',
+            description: 'Learn the fundamentals of Firebase'
+            }
+            ]
+            },
+            {
+            id: 2,
+            title: 'In Progress',
+            cards: [
+            {
+            id: 3,
+            title: 'Learn React Native',
+            description: 'Learn the fundamentals of React Native'
+            },
+            {
+            id: 4,
+            title: 'Learn GraphQL',
+            description: 'Learn the fundamentals of GraphQL'
+            }
+            ]
+            },
+            {
+            id: 3,
+            title: 'Completed',
+            cards: [
+            {
+            id: 5,
+            title: 'Learn Node.js',
+            description: 'Learn the fundamentals of Node.js'
+            },
+            {
+            id: 6,
+            title: 'Learn Express',
+            description: 'Learn the fundamentals of Express'
+            }
+            ]
+            }
+        ])
+        }
+    },[]) - esto significa que el código se ejecutará solo una vez cuando la aplicación se cargue por primera vez
+
+
+
+    - Actualizar y almacenar los datos en el almacenamiento local siempre que haya un cambio en el estado de la placa 
+    useEffect(()=>{
+
+    if (board.length > 0) window.localStorage.setItem("data",JSON.stringify(board))
+
+    },[board])- -  esto significa que el código se ejecutará cada vez que el valor entre corchetes ([]) cambie su valor
+
+     El valor del tablero cambiará cuando el usuario cree una nueva tarea, mueva la tarea o cambie el contenido de la tarea. Estos cambios activarán el código del segundo enlace useEffect y actualizarán automáticamente el almacenamiento local del 
+        navegador con los datos más recientes.

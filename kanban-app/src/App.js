@@ -8,6 +8,68 @@ export default function App() {
 
   const [board, setBoard] = useState([])
 
+  useEffect(() => {
+    let data = window.localStorage.getItem("data")
+    if (data) {
+      setBoard(JSON.parse(data))
+    } else {
+      setBoard([
+        {
+          id: 1,
+          title: 'To Do',
+          cards: [
+            {
+              id: 1,
+              title: 'Learn React',
+              description: 'Learn the fundamentals of React'
+            },
+            {
+              id: 2,
+              title: 'Learn Firebase',
+              description: 'Learn the fundamentals of Firebase'
+            }
+          ]
+        },
+        {
+          id: 2,
+          title: 'In Progress',
+          cards: [
+            {
+              id: 3,
+              title: 'Learn React Native',
+              description: 'Learn the fundamentals of React Native'
+            },
+            {
+              id: 4,
+              title: 'Learn GraphQL',
+              description: 'Learn the fundamentals of GraphQL'
+            }
+          ]
+        },
+        {
+          id: 3,
+          title: 'Completed',
+          cards: [
+            {
+              id: 5,
+              title: 'Learn Node.js',
+              description: 'Learn the fundamentals of Node.js'
+            },
+            {
+              id: 6,
+              title: 'Learn Express',
+              description: 'Learn the fundamentals of Express'
+            }
+          ]
+        }
+      ])
+    }
+  }, [])
+
+  useEffect(() => {
+    if (board.length > 0) window.localStorage.setItem("data", JSON.stringify(board))
+  }, [board])
+
   return (
     <div>
       <Header />
@@ -146,19 +208,19 @@ const styles = {
   },
 }
 
-const board = {
-  id: 1,
-  title: 'To Do',
-  cards: [
-    {
-      id: 1,
-      title: 'Learn React',
-      description: 'Learn the fundamentals of React'
-    },
-    {
-      id: 2,
-      title: 'Learn Firebase',
-      description: 'Learn the fundamentals of Firebase'
-    }
-  ]
-}
+// const board = {
+//   id: 1,
+//   title: 'To Do',
+//   cards: [
+//     {
+//       id: 1,
+//       title: 'Learn React',
+//       description: 'Learn the fundamentals of React'
+//     },
+//     {
+//       id: 2,
+//       title: 'Learn Firebase',
+//       description: 'Learn the fundamentals of Firebase'
+//     }
+//   ]
+// }
