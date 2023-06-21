@@ -1,6 +1,6 @@
 # KanbanApp
 
-<video href="https://youtu.be/_4Cj2DiYx84" width="640" height="480"></video>
+<iframe width="560" height="315" src="https://www.youtube.com/embed/8ml8MjSmK1k" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
 
 En esta búsqueda, crearemos una aplicación web Kanban. Kanban es una herramienta que le permitirá organizar las tareas que deben completarse. Por lo general, una herramienta Kanban se usa en equipos donde todos podrán ver qué tarea se asigna a quién. 
 
@@ -19,3 +19,4 @@ Realizar operaciones CRUD en las tarjetas
 Instalar dependencias
 
 
+https://app.stackup.dev/quest_page/kanban-app
