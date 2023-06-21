@@ -31,7 +31,7 @@ export function Header () {
     const styles={ estilos}
 
 
-## Paso 3: Importar estados de cuenta
+## Paso 3: Importar estados de cuenta (Statements)
 En el archivo App.js escribiremos la mayor parte de la lógica de la aplicación web Kanban en este archivo.
 
 En primer lugar, reemplace el código existente en App.js con el siguiente código. Tendremos que importar varios paquetes y las dependencias arrastrables que descargamos anteriormente en el paso 1.
