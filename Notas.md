@@ -1,4 +1,4 @@
-##  Paso 1: Configuración del proyecto
+## Paso 1: Configuración del proyecto
 
 Primero, crea un nuevo directorio para nuestro proyecto React, Abra su terminal incorporado y ejecute los siguientes comandos línea por línea:
 
@@ -6,30 +6,31 @@ Primero, crea un nuevo directorio para nuestro proyecto React, Abra su terminal 
 
 - cd kanban-app - cambia el directorio a la carpeta kanban-app creada por React
 
-- npm install react-draggable - instala el paquete react-draggable, Este paquete nos permite hacer que cualquier   elemento se pueda arrastrar. Los usuarios podrán arrastrar los componentes a través del navegador web    
+- npm install react-draggable - instala el paquete react-draggable, Este paquete nos permite hacer que cualquier elemento se pueda arrastrar. Los usuarios podrán arrastrar los componentes a través del navegador web
 
 - npm run start - inicia el servidor de desarrollo local, Este comando abre una nueva pestaña en su navegador web predeterminado. En esta pestaña, podrá ver los cambios que ha realizado en su aplicación React en vivo.
 
 Ahora, creemos algunas carpetas nuevas para organizar los archivos con los que trabajaremos. En primer lugar, en la carpeta src , cree una carpeta llamada components .
 
 ## Paso 2: crear el encabezado de la aplicación web
-Ahora se hace  un componente de encabezado simple. Dentro de la carpeta de componentes , crea un archivo llamado Header.js . Para este encabezado, dibujaremos 2 elementos de texto dentro de nuestro elemento <header>. 
+
+Ahora se hace un componente de encabezado simple. Dentro de la carpeta de componentes , crea un archivo llamado Header.js . Para este encabezado, dibujaremos 2 elementos de texto dentro de nuestro elemento <header>.
 
 En la línea 1, puede notar que estamos exportando el componente funcional, Header . La palabra clave export nos permite usar este componente en otros archivos JavaScript que hayamos creado en el proyecto React. Importante
 
 export function Header () {
-  return(
-    <header style={styles.header}>
-      <h1 style={styles.title}>Kanban Board</h1>
-      <p style={styles.subtitle}>Built by stackup-username</p>
-    </header>
-  )
+return(
+
+<header style={styles.header}>
+<h1 style={styles.title}>Kanban Board</h1>
+<p style={styles.subtitle}>Built by stackup-username</p>
+</header>
+)
 }
 
 - Despues en una constante se agregan los estilos
 
-    const styles={ estilos}
-
+  const styles={ estilos}
 
 ## Paso 3: Importar estados de cuenta (Statements)
 
@@ -46,7 +47,7 @@ hook nos permite crear un estado que se puede cambiar. Un Estado es simplemente 
 
 ## Paso 4: Estructura App.js
 
-Crearemos la estructura para la aplicación principal. 
+Crearemos la estructura para la aplicación principal.
 
     export default function App() {
 
@@ -54,7 +55,7 @@ Crearemos la estructura para la aplicación principal.
 
     return (
         <div>
-        
+
         <Header />
 
             <div style={styles.boardContainer}>
@@ -66,15 +67,15 @@ Crearemos la estructura para la aplicación principal.
 
                         <div id={`list_${list.id}`} key={list.id} className="list-container" style={styles.listContainer}>
 
-                        <h2>{list.title}</h2> 
+                        <h2>{list.title}</h2>
 
                         - crea un boton para agregar una nueva tarjeta
                         <button
-                            
+
                             style={styles.newCard} - estilos del boton
 
                             onClick={() => { - al hacer click se agrega una nueva tarjeta
-        
+
                                 let temp_boards = [...board] - crea una copia del array board
 
                                 - recorre el array board
@@ -93,32 +94,32 @@ Crearemos la estructura para la aplicación principal.
                                         })
                                     }
                                 }
-                                
+
                                 setBoard(temp_boards) - se actualiza el estado board
 
                             }} >+ New Card</button>
 
-                        
+
                         {list.cards.map((card) => { - recorre el array cards
                             return (
-                                
+
                                 <Draggable - se agrega el paquete react-draggable
 
-                                    key={card.id} - 
+                                    key={card.id} -
                                     onStop={(e,) => { -
-            
+
                                     }}
                                     >
 
                                     <div style={styles.cardContainer}>
                                         <input type={"text"} style={styles.title} value={card.title}
                                             onChange={(e) => {
-                                            
+
                                             }}
                                         />
                                         <input type={"text"} style={styles.description} value={card.description}
                                             onChange={(e) => {
-                                            
+
                                             }}
                                         />
                                     </div>
@@ -133,3 +134,82 @@ Crearemos la estructura para la aplicación principal.
         </div>
     );
     }
+
+## Paso 5: Lógica de la aplicación
+
+El código anterior solo creará nuevas tareas. Tendremos que agregar algo de lógica para que podamos mover la tarea alrededor de cada cubo. Básicamente, nos gustaría determinar si el usuario ha liberado la tarea dentro del depósito. Una vez que hayamos determinado eso, necesitaremos obtener el depósito de origen y el depósito de destino. La idea detrás de esto es clonar la tarea desde el depósito de origen al depósito de destino. Después de eso, eliminaremos la tarea del depósito de origen.
+
+Este código solo se ejecutará cuando el usuario haya dejado de arrastrar el componente de la tarea. La idea del algoritmo es determinar la posición actual de la tarea y si la tarea se encuentra dentro del rectángulo del cubo. A veces, el usuario simplemente arrastraba la tarea y no la arrastraba hacia el cubo. Nosotros podemos usar.
+
+El codigo va dentro de la función onStop del componente Draggable que se encuentra en el archivo App.js 
+
+    let allLists = document.querySelectorAll('.list-container'); - para obtener todos los componentes <div> que tienes la clase list-container
+
+    for (let i = 0; i < allLists.length; i++) { - recorre el array allLists que contiene el tablero para determinar en qué cubo se encuentra. Si la tarea se encuentra dentro del cubo, podemos agregar la tarea al cubo.
+
+            let list = allLists[i]; 
+            let rect = list.getBoundingClientRect(); - Para determinar sobre qué depósito se arrastra la tarea, podemos usar getBoundingClientRect()
+            let data = { - crea un objeto data que contiene la posicion del mouse
+
+            x: e.clientX,
+            y: e.clientY
+            
+            }
+
+            let flag = false - 
+            
+            if (data.x > rect.left && data.x < rect.right && data.y > rect.top && data.y < rect.bottom) { - si la posicion del mouse esta dentro del rectangulo del cubo se ejecuta el codigo
+
+            let final*list_id = list.id.split('*')[1]; - obtiene el id del cubo
+            let final_card_id = card.id; - obtiene el id de la tarea
+            let temp_boards = [...board] - crea una copia del array board
+
+           
+            for (let boardIndex = 0; boardIndex < temp_boards.length; boardIndex++) { - 
+                for (let cardIndex = 0; cardIndex < temp_boards[boardIndex].cards.length; cardIndex++) {
+                    if (temp_boards[boardIndex].cards[cardIndex].id === final_card_id) {
+                        temp_boards[boardIndex].cards.splice(cardIndex, 1) - elimina la tarea del array board 
+                    }
+                }
+            }
+            for (let boardIndex = 0; boardIndex < temp_boards.length; boardIndex++) {
+                if (temp_boards[boardIndex].id === parseInt(final_list_id)) {- si el id del cubo es igual al id del cubo del array board copia
+                    temp_boards[boardIndex].cards.push(card) - se agrega la tarea al array board copia
+                }
+            }
+            flag = true
+            setBoard(temp_boards)- se actualiza el estado board
+            }            
+
+    }
+
+- Dentro de la funcion onChange se agrega el siguiente codigo 
+
+    Las siguientes dos  logicas son similares solo que una actualiza el titulo y la otra la descripcion de la tarea
+
+
+        let temp_boards = [...board]
+            
+            for (let i = 0; i < temp_boards.length; i++) {- Determinar el objeto exacto en el que se encuentra cada tarea dentro del estado del tablero 
+              for (let j = 0; j < temp_boards[i].cards.length; j++) {
+
+               if (temp_boards[i].cards[j].id === card.id) {
+                temp_boards[i].cards[j].title = e.target.value - actualiza el titulo de la tarea
+               }
+
+              }
+             }
+             setBoard(temp_boards)
+
+        let temp_boards = [...board]
+                for (let i = 0; i < temp_boards.length; i++) {
+                    for (let j = 0; j < temp_boards[i].cards.length; j++) {
+                        
+                        if (temp_boards[i].cards[j].id === card.id) {
+                            temp_boards[i].cards[j].description = e.target.value - actualiza la descripcion de la tarea
+                     
+                        }
+                    }
+                }
+                setBoard(temp_boards)
+
