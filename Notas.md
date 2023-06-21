@@ -32,6 +32,7 @@ export function Header () {
 
 
 ## Paso 3: Importar estados de cuenta (Statements)
+
 En el archivo App.js escribiremos la mayor parte de la lógica de la aplicación web Kanban en este archivo.
 
 En primer lugar, reemplace el código existente en App.js con el siguiente código. Tendremos que importar varios paquetes y las dependencias arrastrables que descargamos anteriormente en el paso 1.
@@ -43,3 +44,92 @@ hook nos permite crear un estado que se puede cambiar. Un Estado es simplemente 
 - import { Header } from "./components/Header"; - importa el componente Header que creamos en el paso 2
 - import Draggable from 'react-draggable'; - importa el paquete react-draggable que descargamos en el paso 1
 
+## Paso 4: Estructura App.js
+
+Crearemos la estructura para la aplicación principal. 
+
+    export default function App() {
+
+    const [board, setBoard] = useState([]) - crea un estado llamado board que es un array vacio, y el setBoard es una funcion que se encarga de actualizar el estado board
+
+    return (
+        <div>
+        
+        <Header />
+
+            <div style={styles.boardContainer}>
+
+                {board.map((list) => { - recorre el array board
+
+                    return (
+                        - retorna un div con la informacion de la lista
+
+                        <div id={`list_${list.id}`} key={list.id} className="list-container" style={styles.listContainer}>
+
+                        <h2>{list.title}</h2> 
+
+                        - crea un boton para agregar una nueva tarjeta
+                        <button
+                            
+                            style={styles.newCard} - estilos del boton
+
+                            onClick={() => { - al hacer click se agrega una nueva tarjeta
+        
+                                let temp_boards = [...board] - crea una copia del array board
+
+                                - recorre el array board
+                                for (let i = 0; i < temp_boards.length; i++) {
+
+                                    - si el id de la lista es igual al id de la lista del array board
+                                    if (temp_boards[i].id === list.id) {
+
+                                        - se agrega una nueva tarjeta al array board copia
+                                        temp_boards[i].cards.push({
+
+                                            id: new Date().getTime(),
+                                            title: 'New Card',
+                                            description: 'New Card Description'
+
+                                        })
+                                    }
+                                }
+                                
+                                setBoard(temp_boards) - se actualiza el estado board
+
+                            }} >+ New Card</button>
+
+                        
+                        {list.cards.map((card) => { - recorre el array cards
+                            return (
+                                
+                                <Draggable - se agrega el paquete react-draggable
+
+                                    key={card.id} - 
+                                    onStop={(e,) => { -
+            
+                                    }}
+                                    >
+
+                                    <div style={styles.cardContainer}>
+                                        <input type={"text"} style={styles.title} value={card.title}
+                                            onChange={(e) => {
+                                            
+                                            }}
+                                        />
+                                        <input type={"text"} style={styles.description} value={card.description}
+                                            onChange={(e) => {
+                                            
+                                            }}
+                                        />
+                                    </div>
+
+                                </Draggable>
+                            )
+                        })}
+                            </div>
+                        )
+                })}
+            </div>
+        </div>
+    );
+    }
