@@ -213,3 +213,6 @@ El codigo va dentro de la función onStop del componente Draggable que se encuen
                 }
                 setBoard(temp_boards)
 
+## Paso 6: Diseño de Kanban
+
+Ahora agregaremos el estilo al final del archivo App.js con una const styles={ estilos}

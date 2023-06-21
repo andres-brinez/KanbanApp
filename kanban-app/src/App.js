@@ -94,6 +94,58 @@ export default function App() {
   );
 }
 
+const styles = {
+  boardContainer: {
+    display: 'flex',
+    flexDirection: 'row',
+    justifyContent: 'space-around',
+    marginTop: '100px'
+  },
+  listContainer: {
+    backgroundColor: '#ecf0f1',
+    borderRadius: '5px',
+    padding: '10px',
+    width: '30vw',
+    minHeight: "100vh",
+  },
+  cardContainer: {
+    backgroundColor: '#ffffff',
+    borderRadius: '5px',
+    padding: '10px',
+    margin: '10px 0',
+    minHeight: "100px",
+    boxShadow: '0 0 10px 0 rgba(0,0,0,0.2)',
+    display: "flex",
+    flexDirection: "column",
+
+  },
+  title: {
+    padding: 0,
+    margin: 0,
+    border: "none",
+    fontSize: "20px",
+    fontWeight: "bold",
+  },
+  description: {
+    padding: 0,
+    margin: 0,
+    border: "none",
+    fontSize: "15px",
+    fontWeight: "bold",
+  },
+  newCard: {
+    backgroundColor: '#2ecc71',
+    color: '#ffffff',
+    border: 'none',
+    width: "100%",
+    padding: '10px',
+    borderRadius: '5px',
+    cursor: 'pointer',
+    outline: 'none'
+
+  },
+}
+
 const board = {
   id: 1,
   title: 'To Do',
