@@ -292,6 +292,7 @@ Antes de la declaración del return se agrega el siguiente codigo:
 
 
     - Actualizar y almacenar los datos en el almacenamiento local siempre que haya un cambio en el estado de la placa 
+    
     useEffect(()=>{
 
     if (board.length > 0) window.localStorage.setItem("data",JSON.stringify(board))
