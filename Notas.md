@@ -18,15 +18,15 @@ Ahora se hace un componente de encabezado simple. Dentro de la carpeta de compon
 
 En la línea 1, puede notar que estamos exportando el componente funcional, Header . La palabra clave export nos permite usar este componente en otros archivos JavaScript que hayamos creado en el proyecto React. Importante
 
-export function Header () {
-return(
+    export function Header () {
+        return(
 
-<header style={styles.header}>
-<h1 style={styles.title}>Kanban Board</h1>
-<p style={styles.subtitle}>Built by stackup-username</p>
-</header>
-)
-}
+            <header style={styles.header}>
+            <h1 style={styles.title}>Kanban Board</h1>
+            <p style={styles.subtitle}>Built by stackup-username</p>
+            </header>
+        )
+    }
 
 - Despues en una constante se agregan los estilos
 
@@ -216,3 +216,5 @@ El codigo va dentro de la función onStop del componente Draggable que se encuen
 ## Paso 6: Diseño de Kanban
 
 Ahora agregaremos el estilo al final del archivo App.js con una const styles={ estilos}
+
+## Paso 7: use Effect
