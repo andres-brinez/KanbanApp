@@ -1,6 +1,6 @@
 # KanbanApp
 
-<iframe width="560" height="315" src="https://www.youtube.com/embed/8ml8MjSmK1k" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+<a href= "https://www.youtube.com/embed/8ml8MjSmK1k"> Ver demo </a>
 
 En esta búsqueda, crearemos una aplicación web Kanban. Kanban es una herramienta que le permitirá organizar las tareas que deben completarse. Por lo general, una herramienta Kanban se usa en equipos donde todos podrán ver qué tarea se asigna a quién. 
 
